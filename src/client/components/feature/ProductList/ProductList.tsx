@@ -9,19 +9,20 @@ import type { FeatureSectionFragmentResponse } from '../../../graphql/fragments'
 import type { FC } from 'react';
 
 type Props = {
+  isInFirstView: boolean;
   featureSection: FeatureSectionFragmentResponse;
 };
 
-export const ProductList: FC<Props> = memo(({ featureSection }) => {
+export const ProductList: FC<Props> = memo(({ featureSection, isInFirstView }) => {
   return (
     <GetDeviceType>
       {({ deviceType }) => {
         switch (deviceType) {
           case DeviceType.DESKTOP: {
-            return <ProductListSlider featureSection={featureSection} />;
+            return <ProductListSlider isInFirstView={isInFirstView} featureSection={featureSection} />;
           }
           case DeviceType.MOBILE: {
-            return <ProductGridList featureSection={featureSection} />;
+            return <ProductGridList isInFirstView={isInFirstView} featureSection={featureSection} />;
           }
         }
       }}

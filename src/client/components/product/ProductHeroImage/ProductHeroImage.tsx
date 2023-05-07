@@ -28,7 +28,12 @@ export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
           <WidthRestriction>
             <Anchor href={`/product/${product.id}`}>
               <div className={styles.container()}>
-                <img className={styles.image()} src={thumbnailFile?.filename ?? EMPTY_IMAGE_SRC} />
+                <img
+                  className={styles.image()}
+                  decoding="async"
+                  loading="eager"
+                  src={thumbnailFile?.filename ?? EMPTY_IMAGE_SRC}
+                />
 
                 <div className={styles.overlay()}>
                   <p

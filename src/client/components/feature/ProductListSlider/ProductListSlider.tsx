@@ -11,9 +11,10 @@ import type { FC } from 'react';
 
 type Props = {
   featureSection: FeatureSectionFragmentResponse;
+  isInFirstView: boolean;
 };
 
-export const ProductListSlider: FC<Props> = ({ featureSection }) => {
+export const ProductListSlider: FC<Props> = ({ featureSection, isInFirstView }) => {
   const products = featureSection.items.map((item) => item.product);
 
   const { containerElementRef, setSlideIndex, slideIndex, visibleItemCount } = useSlider({
@@ -40,7 +41,7 @@ export const ProductListSlider: FC<Props> = ({ featureSection }) => {
                   [styles.item__hidden()]: hidden,
                 })}
               >
-                <ProductCard product={product} />
+                <ProductCard product={product} isInFirstView={isInFirstView} />
               </li>
             );
           })}

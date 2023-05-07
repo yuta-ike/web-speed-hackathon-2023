@@ -7,9 +7,10 @@ import type { FeatureSectionFragmentResponse } from '../../../graphql/fragments'
 
 type Props = {
   featureSection: FeatureSectionFragmentResponse;
+  isInFirstView: boolean;
 };
 
-export const ProductGridList: FC<Props> = ({ featureSection }) => {
+export const ProductGridList: FC<Props> = ({ featureSection, isInFirstView }) => {
   const products = featureSection.items.map((item) => item.product);
 
   return (
@@ -17,7 +18,7 @@ export const ProductGridList: FC<Props> = ({ featureSection }) => {
       {products.map((product) => {
         return (
           <li key={product.id} className={styles.cardListItem()}>
-            <ProductCard product={product} />
+            <ProductCard isInFirstView={isInFirstView} product={product} />
           </li>
         );
       })}

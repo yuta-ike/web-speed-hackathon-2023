@@ -28,11 +28,11 @@ export const Top: FC = () => {
           <ProductHeroImage product={recommendation.product} title="今週のオススメ" />
 
           <div className={styles.featureList()}>
-            {features.map((featureSection) => {
+            {features.map((featureSection, i) => {
               return (
                 <div key={featureSection.id} className={styles.feature()}>
                   <h2 className={styles.featureHeading()}>{featureSection.title}</h2>
-                  <ProductList featureSection={featureSection} />
+                  <ProductList featureSection={featureSection} isInFirstView={i <= 1} />
                 </div>
               );
             })}

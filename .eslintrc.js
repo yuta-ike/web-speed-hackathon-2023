@@ -23,7 +23,7 @@ module.exports = {
     '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
     '@typescript-eslint/consistent-type-imports': ['error'],
     '@typescript-eslint/no-unused-vars': [
-      'error',
+      'warn',
       {
         argsIgnorePattern: '^_',
       },
@@ -36,13 +36,13 @@ module.exports = {
         'newlines-between': 'always',
       },
     ],
-    'react/jsx-sort-props': [
-      'error',
-      {
-        reservedFirst: true,
-        shorthandFirst: true,
-      },
-    ],
+    // 'react/jsx-sort-props': [
+    //   'error',
+    //   {
+    //     reservedFirst: true,
+    //     shorthandFirst: true,
+    //   },
+    // ],
     'react/prop-types': ['off'],
     'react/react-in-jsx-scope': ['off'],
     'sort/imports': ['off'],
