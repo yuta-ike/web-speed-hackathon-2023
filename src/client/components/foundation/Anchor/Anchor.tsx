@@ -1,11 +1,13 @@
+import { Link } from 'react-router-dom';
+
 import * as styles from './Anchor.styles';
 
-import type { ComponentProps, FC } from 'react';
+import type { ComponentPropsWithoutRef, FC } from 'react';
 
-type Props = Omit<ComponentProps<'a'>, 'className'>;
+type Props = Omit<ComponentPropsWithoutRef<'a'>, 'className' | 'href'> & { href: string };
 
 export const Anchor: FC<Props> = ({ children, href, ...rest }) => (
-  <a className={styles.container()} href={href} {...rest}>
+  <Link className={styles.container()} to={href} {...rest}>
     {children}
-  </a>
+  </Link>
 );

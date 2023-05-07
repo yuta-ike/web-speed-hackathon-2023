@@ -41,6 +41,7 @@ export const SignInModal: FC = () => {
     },
     async onSubmit(values, { resetForm }) {
       try {
+        console.log('SIGNIN!!');
         await signIn({
           variables: {
             email: values.email,

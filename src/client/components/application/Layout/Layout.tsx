@@ -1,18 +1,18 @@
+import { Outlet } from 'react-router-dom';
+
 import { Footer } from '../../navigators/Footer/Footer';
 import { Header } from '../../navigators/Header/Header';
 
 import * as styles from './Layout.styles';
 
-import type { FC, ReactNode } from 'react';
+import type { FC } from 'react';
 
-type Props = {
-  children: ReactNode;
-};
-
-export const Layout: FC<Props> = ({ children }) => (
+export const Layout: FC = () => (
   <>
     <Header />
-    <main className={styles.container()}>{children}</main>
+    <main className={styles.container()}>
+      <Outlet />
+    </main>
     <Footer />
   </>
 );
