@@ -24,9 +24,6 @@ export default defineConfig(async ({ mode }) => {
   return {
     build: {
       assetsInlineLimit: 20480,
-      // cssCodeSplit: false,
-      // cssTarget: 'es6',
-      minify: true,
       rollupOptions: {
         output: {
           experimentalMinChunkSize: 40960,
