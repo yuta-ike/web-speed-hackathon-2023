@@ -1,13 +1,14 @@
-import type { FC } from 'react';
 import { useEffect, useState } from 'react';
 
-import type { MediaFileFragmentResponse } from '../../../../graphql/fragments';
 import { getMediaType } from '../../../../utils/get_media_type';
 import { Icon } from '../../../foundation/Icon';
 import { Image } from '../../../foundation/Image';
 
 import * as styles from './MediaItem.styles';
 import { loadThumbnail } from './loadThumbnail';
+
+import type { MediaFileFragmentResponse } from '../../../../graphql/fragments';
+import type { FC } from 'react';
 
 type Props = {
   file: MediaFileFragmentResponse;

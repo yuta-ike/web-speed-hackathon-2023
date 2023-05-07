@@ -1,14 +1,15 @@
 import _ from 'lodash';
-import type { FC } from 'react';
 import { memo } from 'react';
 
-import type { ProductFragmentResponse } from '../../../graphql/fragments';
 import { Icon } from '../../foundation/Icon';
 import { OutlineButton } from '../../foundation/OutlineButton';
 import { PrimaryAnchor } from '../../foundation/PrimaryAnchor';
 import { PrimaryButton } from '../../foundation/PrimaryButton';
 
 import * as styles from './ProductPurchaseSection.styles';
+
+import type { ProductFragmentResponse } from '../../../graphql/fragments';
+import type { FC } from 'react';
 
 type Props = {
   product: ProductFragmentResponse | undefined;

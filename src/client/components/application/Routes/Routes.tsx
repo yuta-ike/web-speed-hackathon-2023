@@ -1,4 +1,3 @@
-import type { FC } from 'react';
 import * as Router from 'react-router-dom';
 
 import { NotFound } from '../../../pages/NotFound';
@@ -8,6 +7,8 @@ import { ProductDetail } from '../../../pages/ProductDetail';
 import { Top } from '../../../pages/Top';
 
 import { useScrollToTop } from './hooks';
+
+import type { FC } from 'react';
 
 export const Routes: FC = () => {
   useScrollToTop();

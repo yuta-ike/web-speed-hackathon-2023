@@ -1,9 +1,10 @@
 import classNames from 'classnames';
-import type { FC } from 'react';
 
 import { Anchor } from '../Anchor';
 
 import * as styles from './PrimaryAnchor.styles';
+
+import type { FC } from 'react';
 
 type Size = 'base' | 'lg';
 type Props = {

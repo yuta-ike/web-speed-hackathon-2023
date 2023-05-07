@@ -1,9 +1,10 @@
 import classNames from 'classnames';
-import type { FC } from 'react';
 
 import { Icon } from '../../foundation/Icon';
 
 import * as styles from './ProductListSlideButton.styles';
+
+import type { FC } from 'react';
 
 export const ArrowType = {
   LEFT: 'LEFT',

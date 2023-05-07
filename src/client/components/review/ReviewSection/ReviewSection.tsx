@@ -1,16 +1,17 @@
-import type { FormikErrors } from 'formik';
 import { useFormik } from 'formik';
 import _ from 'lodash';
-import type { FC } from 'react';
 import { memo } from 'react';
 import * as z from 'zod';
 
-import type { ReviewFragmentResponse } from '../../../graphql/fragments';
 import { PrimaryButton } from '../../foundation/PrimaryButton';
 import { TextArea } from '../../foundation/TextArea';
 import { ReviewList } from '../ReviewList';
 
 import * as styles from './ReviewSection.styles';
+
+import type { ReviewFragmentResponse } from '../../../graphql/fragments';
+import type { FC } from 'react';
+import type { FormikErrors } from 'formik';
 
 const LESS_THAN_64_LENGTH_REGEX = /^([\s\S\n]{0,8}){0,8}$/u;
 // NOTE: 改行含めて 64 文字以内であるかどうか確認する

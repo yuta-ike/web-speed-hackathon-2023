@@ -1,7 +1,8 @@
 import classNames from 'classnames';
-import type { FC, ReactNode } from 'react';
 
 import * as styles from './ProductOfferLabel.styles';
+
+import type { FC, ReactNode } from 'react';
 
 type Size = 'base' | 'lg';
 type Props = {

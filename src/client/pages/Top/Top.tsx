@@ -1,4 +1,3 @@
-import type { FC } from 'react';
 import { Helmet } from 'react-helmet';
 
 import { Layout } from '../../components/application/Layout';
@@ -8,6 +7,8 @@ import { useFeatures } from '../../hooks/useFeatures';
 import { useRecommendation } from '../../hooks/useRecommendation';
 
 import * as styles from './Top.styles';
+
+import type { FC } from 'react';
 
 export const Top: FC = () => {
   const { recommendation } = useRecommendation();

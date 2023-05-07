@@ -1,8 +1,9 @@
 import classNames from 'classnames';
-import type { FC } from 'react';
 import * as Icons from 'react-icons/fa';
 
 import * as styles from './Icon.styles';
+
+import type { FC } from 'react';
 
 type Props = {
   type: keyof typeof Icons;

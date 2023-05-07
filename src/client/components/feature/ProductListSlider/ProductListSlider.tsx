@@ -1,12 +1,13 @@
 import classNames from 'classnames';
-import type { FC } from 'react';
 
-import type { FeatureSectionFragmentResponse } from '../../../graphql/fragments';
 import { ProductCard } from '../ProductCard';
 import { ArrowType, ProductListSlideButton } from '../ProductListSlideButton';
 
 import * as styles from './ProductListSlider.styles';
 import { useSlider } from './hooks/useSlider';
+
+import type { FeatureSectionFragmentResponse } from '../../../graphql/fragments';
+import type { FC } from 'react';
 
 type Props = {
   featureSection: FeatureSectionFragmentResponse;

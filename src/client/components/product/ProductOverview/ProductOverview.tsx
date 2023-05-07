@@ -1,12 +1,13 @@
 import * as currencyFormatter from 'currency-formatter';
 import _ from 'lodash';
-import type { FC } from 'react';
 import { memo } from 'react';
 
-import type { LimitedTimeOfferFragmentResponse, ProductFragmentResponse } from '../../../graphql/fragments';
 import { ProductOfferLabel } from '../ProductOfferLabel';
 
 import * as styles from './ProductOverview.styles';
+
+import type { LimitedTimeOfferFragmentResponse, ProductFragmentResponse } from '../../../graphql/fragments';
+import type { FC } from 'react';
 
 type Props = {
   product: ProductFragmentResponse | undefined;

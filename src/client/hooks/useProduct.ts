@@ -1,8 +1,9 @@
 import { useQuery } from '@apollo/client';
 import { useErrorHandler } from 'react-error-boundary';
 
-import type { GetProductDetailsQueryResponse } from '../graphql/queries';
 import { GetProductDetailsQuery } from '../graphql/queries';
+
+import type { GetProductDetailsQueryResponse } from '../graphql/queries';
 
 export const useProduct = (productId: number) => {
   const handleError = useErrorHandler();

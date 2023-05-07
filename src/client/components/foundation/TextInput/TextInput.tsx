@@ -1,6 +1,6 @@
-import type { ComponentProps, FC } from 'react';
-
 import * as styles from './TextInput.styles';
+
+import type { ComponentProps, FC } from 'react';
 
 type Props = Omit<ComponentProps<'input'>, 'className'> & {
   label: string;

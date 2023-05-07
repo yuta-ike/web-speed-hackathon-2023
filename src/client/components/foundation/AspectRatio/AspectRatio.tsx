@@ -1,8 +1,9 @@
-import type { FC, ReactNode } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { throttle } from 'throttle-debounce';
 
 import * as styles from './AspectRatio.styles';
+
+import type { FC, ReactNode } from 'react';
 
 type Props = {
   ratioWidth: number;

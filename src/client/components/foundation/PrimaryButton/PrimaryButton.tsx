@@ -1,7 +1,8 @@
 import classnames from 'classnames';
-import type { ComponentProps, FC } from 'react';
 
 import * as styles from './PrimaryButton.styles';
+
+import type { ComponentProps, FC } from 'react';
 
 type Size = 'sm' | 'base' | 'lg';
 type Props = Omit<ComponentProps<'button'>, 'className'> & {

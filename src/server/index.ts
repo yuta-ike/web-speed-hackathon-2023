@@ -10,11 +10,12 @@ import send from 'koa-send';
 import session from 'koa-session';
 import serve from 'koa-static';
 
-import type { Context } from './context';
 import { dataSource } from './data_source';
 import { initializeApolloServer } from './graphql';
 import { initializeDatabase } from './utils/initialize_database';
 import { rootResolve } from './utils/root_resolve';
+
+import type { Context } from './context';
 
 const PORT = Number(process.env.PORT ?? 8080);
 

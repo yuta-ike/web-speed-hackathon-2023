@@ -1,18 +1,19 @@
 import { gql } from '@apollo/client';
 
-import type {
-  AuthUserFragmentResponse,
-  FeatureSectionFragmentResponse,
-  ProductReviewFragmentResponse,
-  ProductWithReviewFragmentResponse,
-  RecommendationFragmentResponse,
-} from './fragments';
 import {
   AuthUserFragment,
   FeatureSectionFragment,
   ProductReviewFragment,
   ProductWithReviewFragment,
   RecommendationFragment,
+} from './fragments';
+
+import type {
+  AuthUserFragmentResponse,
+  FeatureSectionFragmentResponse,
+  ProductReviewFragmentResponse,
+  ProductWithReviewFragmentResponse,
+  RecommendationFragmentResponse,
 } from './fragments';
 
 export const GetAuthUserQuery = gql`

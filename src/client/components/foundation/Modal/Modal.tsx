@@ -1,7 +1,8 @@
-import type { FC, ReactNode } from 'react';
 import OverlaysModal, { type RenderModalBackdropProps } from 'react-overlays/Modal';
 
 import * as styles from './Modal.styles';
+
+import type { FC, ReactNode } from 'react';
 
 const Backdrop: FC<RenderModalBackdropProps> = (props) => <div className={styles.backdrop()} {...props}></div>;
 

@@ -1,4 +1,3 @@
-import type { FC } from 'react';
 import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
 
@@ -19,6 +18,8 @@ import { useOpenModal } from '../../store/modal';
 import { normalizeCartItemCount } from '../../utils/normalize_cart_item';
 
 import * as styles from './ProductDetail.styles';
+
+import type { FC } from 'react';
 
 export const ProductDetail: FC = () => {
   const { productId } = useParams();

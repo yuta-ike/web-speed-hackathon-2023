@@ -1,7 +1,8 @@
 import classnames from 'classnames';
-import type { ComponentProps, FC } from 'react';
 
 import * as styles from './OutlineButton.styles';
+
+import type { ComponentProps, FC } from 'react';
 
 type Size = 'base' | 'lg';
 type Props = Omit<ComponentProps<'button'>, 'className'> & {

@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import type { LimitedTimeOfferFragmentResponse, ProductFragmentResponse } from '../graphql/fragments';
 import { getActiveOffer } from '../utils/get_active_offer';
+
+import type { LimitedTimeOfferFragmentResponse, ProductFragmentResponse } from '../graphql/fragments';
 
 export function useActiveOffer(product: ProductFragmentResponse | undefined) {
   const [activeOffer, setActiveOffer] = useState<LimitedTimeOfferFragmentResponse | undefined>(undefined);

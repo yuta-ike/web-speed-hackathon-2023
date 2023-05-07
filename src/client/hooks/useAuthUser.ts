@@ -1,7 +1,8 @@
 import { useQuery } from '@apollo/client';
 
-import type { GetUserAuthQueryResponse } from '../graphql/queries';
 import { GetAuthUserQuery } from '../graphql/queries';
+
+import type { GetUserAuthQueryResponse } from '../graphql/queries';
 
 export const useAuthUser = () => {
   const authUserResult = useQuery<GetUserAuthQueryResponse>(GetAuthUserQuery);

@@ -1,14 +1,15 @@
 import { Temporal } from '@js-temporal/polyfill';
 import * as bcrypt from 'bcrypt';
-import type { GraphQLFieldResolver } from 'graphql';
 
 import { Order } from '../../model/order';
 import { Profile } from '../../model/profile';
 import { Review } from '../../model/review';
 import { ShoppingCartItem } from '../../model/shopping_cart_item';
 import { User } from '../../model/user';
-import type { Context } from '../context';
 import { dataSource } from '../data_source';
+
+import type { Context } from '../context';
+import type { GraphQLFieldResolver } from 'graphql';
 
 type MutationResolver = {
   signin: GraphQLFieldResolver<unknown, Context, { email: string; password: string }, Promise<boolean>>;

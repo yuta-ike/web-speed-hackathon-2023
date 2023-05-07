@@ -1,13 +1,14 @@
 import classNames from 'classnames';
-import type { FC } from 'react';
 import { useState } from 'react';
 
-import type { ProductFragmentResponse } from '../../../graphql/fragments';
 import { AspectRatio } from '../../foundation/AspectRatio';
 
 import { MediaItem } from './MediaItem';
 import { MediaItemPreviewer } from './MediaItemPreviewer';
 import * as styles from './ProductMediaListPreviewer.styles';
+
+import type { ProductFragmentResponse } from '../../../graphql/fragments';
+import type { FC } from 'react';
 
 type Props = {
   product: ProductFragmentResponse | undefined;

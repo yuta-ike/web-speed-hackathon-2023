@@ -1,7 +1,8 @@
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
-import type { ModalKey } from './state';
 import { modalState } from './state';
+
+import type { ModalKey } from './state';
 
 export const useIsOpenModal = (key: ModalKey) => {
   const modalKey = useRecoilValue(modalState);

@@ -1,5 +1,6 @@
-import type { HttpOptions } from '@apollo/client';
 import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
+
+import type { HttpOptions } from '@apollo/client';
 
 const syncXhr: HttpOptions['fetch'] = (uri, options) => {
   return new Promise((resolve, reject) => {

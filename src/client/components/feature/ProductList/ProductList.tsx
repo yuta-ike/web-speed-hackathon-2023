@@ -1,11 +1,12 @@
 import _ from 'lodash';
-import type { FC } from 'react';
 import { memo } from 'react';
 
-import type { FeatureSectionFragmentResponse } from '../../../graphql/fragments';
 import { DeviceType, GetDeviceType } from '../../foundation/GetDeviceType';
 import { ProductGridList } from '../ProductGridList';
 import { ProductListSlider } from '../ProductListSlider';
+
+import type { FeatureSectionFragmentResponse } from '../../../graphql/fragments';
+import type { FC } from 'react';
 
 type Props = {
   featureSection: FeatureSectionFragmentResponse;

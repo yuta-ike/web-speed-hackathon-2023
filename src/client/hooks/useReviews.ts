@@ -2,8 +2,9 @@ import { useLazyQuery } from '@apollo/client';
 import { useEffect } from 'react';
 import { useErrorHandler } from 'react-error-boundary';
 
-import type { GetProductReviewsQueryResponse } from '../graphql/queries';
 import { GetProductReviewsQuery } from '../graphql/queries';
+
+import type { GetProductReviewsQueryResponse } from '../graphql/queries';
 
 export const useReviews = (productId: number | undefined) => {
   const handleError = useErrorHandler();

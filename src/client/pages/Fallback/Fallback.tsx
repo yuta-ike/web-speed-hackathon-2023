@@ -1,9 +1,10 @@
-import type { FC } from 'react';
 import { Helmet } from 'react-helmet';
 
 import { Layout } from '../../components/application/Layout';
 
 import * as styles from './Fallback.styles';
+
+import type { FC } from 'react';
 
 export const Fallback: FC = () => (
   <>

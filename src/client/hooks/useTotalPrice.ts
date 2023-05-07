@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import type { OrderFragmentResponse } from '../graphql/fragments';
 import { getActiveOffer } from '../utils/get_active_offer';
+
+import type { OrderFragmentResponse } from '../graphql/fragments';
 
 export function useTotalPrice(order: OrderFragmentResponse) {
   const [totalPrice, setTotalPrice] = useState<number>(0);

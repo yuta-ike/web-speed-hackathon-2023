@@ -1,7 +1,8 @@
 import classNames from 'classnames';
-import type { ComponentProps, FC } from 'react';
 
 import * as styles from './Image.styles';
+
+import type { ComponentProps, FC } from 'react';
 
 type Props = Omit<ComponentProps<'img'>, 'className'> & {
   fill?: boolean;

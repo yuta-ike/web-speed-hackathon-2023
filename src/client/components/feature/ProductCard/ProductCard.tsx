@@ -1,7 +1,5 @@
 import * as currencyFormatter from 'currency-formatter';
-import type { FC } from 'react';
 
-import type { ProductFragmentResponse } from '../../../graphql/fragments';
 import { useActiveOffer } from '../../../hooks/useActiveOffer';
 import { Anchor } from '../../foundation/Anchor';
 import { AspectRatio } from '../../foundation/AspectRatio';
@@ -9,6 +7,9 @@ import { Image } from '../../foundation/Image';
 import { ProductOfferLabel } from '../../product/ProductOfferLabel';
 
 import * as styles from './ProductCard.styles';
+
+import type { ProductFragmentResponse } from '../../../graphql/fragments';
+import type { FC } from 'react';
 
 type Props = {
   product: ProductFragmentResponse;

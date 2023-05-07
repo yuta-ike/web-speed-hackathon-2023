@@ -1,8 +1,9 @@
 import { useMutation } from '@apollo/client';
 import { useErrorHandler } from 'react-error-boundary';
 
-import type { OrderItemsInShoppingCartMutationResponse } from '../graphql/mutations';
 import { OrderItemsInShoppingCartMutation } from '../graphql/mutations';
+
+import type { OrderItemsInShoppingCartMutationResponse } from '../graphql/mutations';
 
 export const useSubmitOrder = () => {
   const handleError = useErrorHandler();

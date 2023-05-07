@@ -1,12 +1,13 @@
 import classNames from 'classnames';
-import type { FC } from 'react';
 
-import type { MediaFileFragmentResponse } from '../../../../graphql/fragments';
 import { getMediaType } from '../../../../utils/get_media_type';
 import { DeviceType, GetDeviceType } from '../../../foundation/GetDeviceType';
 import { Image } from '../../../foundation/Image';
 
 import * as styles from './MediaItemPreiewer.styles';
+
+import type { MediaFileFragmentResponse } from '../../../../graphql/fragments';
+import type { FC } from 'react';
 
 type Props = {
   file: MediaFileFragmentResponse;

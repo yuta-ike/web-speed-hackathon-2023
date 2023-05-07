@@ -1,12 +1,13 @@
 import { useFormik } from 'formik';
 import _ from 'lodash';
-import type { ChangeEventHandler, FC } from 'react';
 import zipcodeJa from 'zipcode-ja';
 
 import { PrimaryButton } from '../../foundation/PrimaryButton';
 import { TextInput } from '../../foundation/TextInput';
 
 import * as styles from './OrderForm.styles';
+
+import type { ChangeEventHandler, FC } from 'react';
 
 type OrderFormValue = {
   zipCode: string;

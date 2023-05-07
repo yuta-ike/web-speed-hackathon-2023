@@ -1,11 +1,11 @@
-import type { Context } from '@apollo/client';
-import type { GraphQLFieldResolver } from 'graphql';
-
 import { FeatureSection } from '../../model/feature_section';
 import { Product } from '../../model/product';
 import { Recommendation } from '../../model/recommendation';
 import { User } from '../../model/user';
 import { dataSource } from '../data_source';
+
+import type { GraphQLFieldResolver } from 'graphql';
+import type { Context } from '@apollo/client';
 
 type QueryResolver = {
   features: GraphQLFieldResolver<unknown, Context, never, Promise<FeatureSection[]>>;

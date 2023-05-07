@@ -1,10 +1,10 @@
-import type { FC } from 'react';
-
-import type { ReviewFragmentResponse } from '../../../graphql/fragments';
 import { AspectRatio } from '../../foundation/AspectRatio';
 import { Image } from '../../foundation/Image';
 
 import * as styles from './ReviewList.styles';
+
+import type { ReviewFragmentResponse } from '../../../graphql/fragments';
+import type { FC } from 'react';
 
 type Props = {
   reviews: ReviewFragmentResponse[];
