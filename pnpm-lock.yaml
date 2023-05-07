@@ -25,9 +25,6 @@ dependencies:
   bcrypt:
     specifier: 5.1.0
     version: 5.1.0
-  canvaskit-wasm:
-    specifier: 0.38.0
-    version: 0.38.0
   classnames:
     specifier: 2.3.2
     version: 2.3.2
@@ -2424,10 +2421,6 @@ packages:
 
   /caniuse-lite@1.0.30001486:
     resolution: {integrity: sha512-uv7/gXuHi10Whlj0pp5q/tsK/32J2QSqVRKQhs2j8VsDCjgyruAh/eEXHF822VqO9yT6iZKw3nRwZRSPBE9OQg==}
-
-  /canvaskit-wasm@0.38.0:
-    resolution: {integrity: sha512-ZEG6lucpbQ4Ld+mY8C1Ng+PMLVP+/AX02jS0Sdl28NyMxuKSa9uKB8oGd1BYp1XWPyO2Jgr7U8pdyjJ/F3xR5Q==}
-    dev: false
 
   /chalk@2.4.2:
     resolution: {integrity: sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==}
