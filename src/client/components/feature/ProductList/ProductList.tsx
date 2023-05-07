@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import isEqual from 'lodash.isequal';
 import { memo } from 'react';
 
 import { DeviceType, GetDeviceType } from '../../foundation/GetDeviceType';
@@ -28,6 +28,6 @@ export const ProductList: FC<Props> = memo(({ featureSection, isInFirstView }) =
       }}
     </GetDeviceType>
   );
-}, _.isEqual);
+}, isEqual);
 
 ProductList.displayName = 'ProductList';

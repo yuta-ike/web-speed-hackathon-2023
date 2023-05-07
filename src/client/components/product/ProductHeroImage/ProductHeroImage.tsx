@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import _ from 'lodash';
+import isEqual from 'lodash.isequal';
 import { memo } from 'react';
 
 import { Anchor } from '../../foundation/Anchor';
@@ -60,6 +60,6 @@ export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
       }}
     </GetDeviceType>
   );
-}, _.isEqual);
+}, isEqual);
 
 ProductHeroImage.displayName = 'ProductHeroImage';

@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import isEqual from 'lodash.isequal';
 import { memo } from 'react';
 
 import { Icon } from '../../foundation/Icon';
@@ -67,7 +67,7 @@ export const ProductPurchaseSection: FC<Props> = memo(
       </div>
     );
   },
-  _.isEqual,
+  isEqual,
 );
 
 ProductPurchaseSection.displayName = 'ProductPurchaseSection';

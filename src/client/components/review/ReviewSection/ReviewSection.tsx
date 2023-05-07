@@ -1,5 +1,5 @@
 import { useFormik } from 'formik';
-import _ from 'lodash';
+import isEqual from 'lodash.isequal';
 import { memo } from 'react';
 import * as z from 'zod';
 
@@ -72,6 +72,6 @@ export const ReviewSection: FC<Props> = memo(({ hasSignedIn, onSubmitReview, rev
       )}
     </div>
   );
-}, _.isEqual);
+}, isEqual);
 
 ReviewSection.displayName = 'ReviewSection';
