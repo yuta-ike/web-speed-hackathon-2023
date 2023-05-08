@@ -21,8 +21,7 @@ export const itemList = () => css`
 `;
 
 export const item = () => css`
-  height: 40px;
-  width: 40px;
+  aspect-ratio: 1 / 1;
 `;
 
 export const itemSelectButton = () => css`

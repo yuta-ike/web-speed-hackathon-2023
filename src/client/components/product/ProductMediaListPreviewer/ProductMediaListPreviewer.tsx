@@ -1,8 +1,6 @@
 import classNames from 'classnames';
 import { useState } from 'react';
 
-import { AspectRatio } from '../../foundation/AspectRatio';
-
 import { MediaItem } from './MediaItem';
 import { MediaItemPreviewer } from './MediaItemPreviewer';
 import * as styles from './ProductMediaListPreviewer.styles';
@@ -31,17 +29,15 @@ export const ProductMediaListPreviewer: FC<Props> = ({ product }) => {
 
             return (
               <li key={media.id} className={styles.item()}>
-                <AspectRatio ratioHeight={1} ratioWidth={1}>
-                  <button
-                    className={classNames(styles.itemSelectButton(), {
-                      [styles.itemSelectButton__disabled()]: disabled,
-                    })}
-                    disabled={disabled}
-                    onClick={() => setActiveIndex(index)}
-                  >
-                    <MediaItem file={media.file} />
-                  </button>
-                </AspectRatio>
+                <button
+                  className={classNames(styles.itemSelectButton(), {
+                    [styles.itemSelectButton__disabled()]: disabled,
+                  })}
+                  disabled={disabled}
+                  onClick={() => setActiveIndex(index)}
+                >
+                  <MediaItem file={media.file} />
+                </button>
               </li>
             );
           })}

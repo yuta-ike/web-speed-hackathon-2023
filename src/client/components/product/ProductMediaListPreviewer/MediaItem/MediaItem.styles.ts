@@ -2,9 +2,10 @@ import { css } from '@emotion/css';
 
 export const container = () => css`
   display: flex;
-  height: 100%;
+  height: 40px;
   position: relative;
-  width: 100%;
+  width: 40px;
+  background-color: #eaeaeb;
 `;
 
 export const playIcon = () => css`
