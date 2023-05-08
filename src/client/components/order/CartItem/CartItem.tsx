@@ -4,7 +4,6 @@ import * as currencyFormatter from 'currency-formatter';
 import { useActiveOffer } from '../../../hooks/useActiveOffer';
 import { normalizeCartItemCount } from '../../../utils/normalize_cart_item';
 import { Anchor } from '../../foundation/Anchor';
-import { AspectRatio } from '../../foundation/AspectRatio';
 import { DeviceType, GetDeviceType } from '../../foundation/GetDeviceType';
 import { Image } from '../../foundation/Image';
 import { OutlineButton } from '../../foundation/OutlineButton';
@@ -51,9 +50,12 @@ export const CartItem: FC<Props> = ({ item, onRemove, onUpdate }) => {
                         [styles.thumbnail__mobile()]: deviceType === DeviceType.MOBILE,
                       })}
                     >
-                      <AspectRatio ratioHeight={9} ratioWidth={16}>
-                        <Image fill src={thumbnailFile.filename} />
-                      </AspectRatio>
+                      <Image
+                        fill
+                        src={thumbnailFile.filename}
+                        width={deviceType === DeviceType.DESKTOP ? '256px' : '50%'}
+                        height={deviceType === DeviceType.DESKTOP ? '144px' : undefined}
+                      />
                       {activeOffer !== undefined && (
                         <div className={styles.offerLabel()}>
                           <ProductOfferLabel size="base">タイムセール中</ProductOfferLabel>

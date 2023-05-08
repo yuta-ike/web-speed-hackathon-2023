@@ -37,6 +37,7 @@ export const thumbnail = () => css`
   border-radius: 8px;
   overflow: hidden;
   position: relative;
+  aspect-ratio: 16 / 9;
 `;
 
 export const thumbnail__mobile = () => css`
