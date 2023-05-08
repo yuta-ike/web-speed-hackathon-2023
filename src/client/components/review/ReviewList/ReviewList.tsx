@@ -1,3 +1,5 @@
+import { Temporal } from '@js-temporal/polyfill';
+
 import { AspectRatio } from '../../foundation/AspectRatio';
 import { Image } from '../../foundation/Image';
 
@@ -18,7 +20,7 @@ export const ReviewList: FC<Props> = ({ reviews }) => {
   return (
     <ul className={styles.itemList()}>
       {reviews.map((review) => {
-        const endTime = window.Temporal.Instant.from(review.postedAt).toLocaleString('ja-jp', {
+        const endTime = Temporal.Instant.from(review.postedAt).toLocaleString('ja-jp', {
           day: '2-digit',
           hour: '2-digit',
           minute: '2-digit',

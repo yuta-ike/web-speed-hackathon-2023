@@ -1,4 +1,4 @@
-import { useFormik } from 'formik';
+import { useState } from 'react';
 
 import { PrimaryButton } from '../../foundation/PrimaryButton';
 import { TextInput } from '../../foundation/TextInput';
@@ -19,65 +19,69 @@ type Props = {
 };
 
 export const OrderForm: FC<Props> = ({ onSubmit }) => {
-  const formik = useFormik<OrderFormValue>({
-    initialValues: {
-      city: '',
-      prefecture: '',
-      streetAddress: '',
-      zipCode: '',
-    },
-    onSubmit,
-  });
+  const [city, setCity] = useState('');
+  const [prefecture, setPrefecture] = useState('');
+  const [streetAddress, setStreetAddress] = useState('');
+  const [zipCode, setZipCode] = useState('');
 
   const handleZipcodeChange: ChangeEventHandler<HTMLInputElement> = async (event) => {
-    formik.handleChange(event);
+    const zipCode = event.target.value;
+    setZipCode(zipCode);
 
     const zipcodeJa = await import('zipcode-ja').then((m) => m.default);
 
-    const zipCode = event.target.value;
     const address = [...(zipcodeJa[zipCode]?.address ?? [])];
     const prefecture = address.shift();
     const city = address.join(' ');
 
-    formik.setFieldValue('prefecture', prefecture);
-    formik.setFieldValue('city', city);
+    setPrefecture(prefecture);
+    setCity(city);
+  };
+
+  const handleSubmit = () => {
+    onSubmit({
+      city,
+      prefecture,
+      streetAddress,
+      zipCode,
+    });
   };
 
   return (
     <div className={styles.container()}>
-      <form className={styles.form()} data-testid="order-form" onSubmit={formik.handleSubmit}>
+      <form className={styles.form()} data-testid="order-form" onSubmit={handleSubmit}>
         <div className={styles.inputList()}>
           <TextInput
             required
             id="zipCode"
             label="郵便番号"
-            onChange={handleZipcodeChange}
             placeholder="例: 1500042"
-            value={formik.values.zipCode}
+            value={zipCode}
+            onChange={(e) => handleZipcodeChange(e)}
           />
           <TextInput
             required
             id="prefecture"
             label="都道府県"
-            onChange={formik.handleChange}
             placeholder="例: 東京都"
-            value={formik.values.prefecture}
+            value={prefecture}
+            onChange={(e) => setPrefecture(e.target.value)}
           />
           <TextInput
             required
             id="city"
             label="市区町村"
-            onChange={formik.handleChange}
             placeholder="例: 渋谷区宇田川町"
-            value={formik.values.city}
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
           />
           <TextInput
             required
             id="streetAddress"
             label="番地・建物名など"
-            onChange={formik.handleChange}
             placeholder="例: 40番1号 Abema Towers"
-            value={formik.values.streetAddress}
+            value={streetAddress}
+            onChange={(e) => setStreetAddress(e.target.value)}
           />
         </div>
         <div className={styles.purchaseButton()}>

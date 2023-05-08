@@ -1,5 +1,6 @@
 import * as currencyFormatter from 'currency-formatter';
-
+import { Temporal } from '@js-temporal/polyfill';
+ 
 import { ProductOfferLabel } from '../ProductOfferLabel';
 
 import * as styles from './ProductOverview.styles';
@@ -22,7 +23,7 @@ export const ProductOverview: FC<Props> = ({ activeOffer, product }) => {
       return;
     }
 
-    const endTime = window.Temporal.Instant.from(activeOffer.endDate).toLocaleString('ja-jp', {
+    const endTime = Temporal.Instant.from(activeOffer.endDate).toLocaleString('ja-jp', {
       day: '2-digit',
       hour: '2-digit',
       minute: '2-digit',

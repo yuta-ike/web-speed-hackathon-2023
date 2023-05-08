@@ -1,5 +1,4 @@
-import { useFormik } from 'formik';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { useSignUp } from '../../../hooks/useSignUp';
 import { useCloseModal, useIsOpenModal, useOpenModal } from '../../../store/modal';
@@ -9,11 +8,10 @@ import { TextInput } from '../../foundation/TextInput';
 
 import * as styles from './SignUpModal.styles';
 
-import type { FC } from 'react';
-import type { FormikErrors } from 'formik';
+import type { FC, FormEvent } from 'react';
 
 const NOT_INCLUDED_AT_CHAR_REGEX = /^(?:[^@]*){6,}$/;
-const NOT_INCLUDED_SYMBOL_CHARS_REGEX = /^(?:(?:[a-zA-Z0-9]*){2,})+$/;
+const NOT_INCLUDED_SYMBOL_CHARS_REGEX = /^([a-zA-Z0-9]{2,})+$/;
 
 // // NOTE: 文字列に @ が含まれているか確認する
 // const emailSchema = z.string().refine((v) => !NOT_INCLUDED_AT_CHAR_REGEX.test(v));
@@ -34,40 +32,42 @@ export const SignUpModal: FC = () => {
   const handleCloseModal = useCloseModal();
 
   const [submitError, setSubmitError] = useState<Error | null>(null);
-  const formik = useFormik<SignUpForm>({
-    initialValues: {
-      email: '',
-      name: '',
-      password: '',
-    },
-    async onSubmit(values, { resetForm }) {
-      try {
-        await signUp({
-          variables: {
-            email: values.email,
-            name: values.name,
-            password: values.password,
-          },
-        });
-        resetForm();
-        setSubmitError(null);
-        handleCloseModal();
-      } catch (err) {
-        setSubmitError(err as Error);
-      }
-    },
-    validate(values) {
-      const errors: FormikErrors<SignUpForm> = {};
-      if (values.email != '' && NOT_INCLUDED_AT_CHAR_REGEX.test(values.email)) {
-        errors['email'] = 'メールアドレスの形式が間違っています';
-      }
-      if (values.password != '' && NOT_INCLUDED_SYMBOL_CHARS_REGEX.test(values.password)) {
-        errors['password'] = '英数字以外の文字を含めてください';
-      }
-      return errors;
-    },
-    validateOnChange: true,
-  });
+
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      await signUp({
+        variables: {
+          email,
+          name,
+          password,
+        },
+      });
+      setEmail('');
+      setName('');
+      setPassword('');
+      setSubmitError(null);
+      handleCloseModal();
+    } catch (err) {
+      setSubmitError(err as Error);
+    }
+  };
+
+  const emailError = useMemo(() => {
+    if (email != '' && NOT_INCLUDED_AT_CHAR_REGEX.test(email)) {
+      return 'メールアドレスの形式が間違っています';
+    }
+  }, [email]);
+
+  const passwordError = useMemo(() => {
+    if (password != '' && NOT_INCLUDED_SYMBOL_CHARS_REGEX.test(password)) {
+      return '英数字以外の文字を含めてください';
+    }
+  }, [password]);
 
   return (
     <Modal onHide={handleCloseModal} show={isOpened}>
@@ -82,40 +82,40 @@ export const SignUpModal: FC = () => {
             ログイン
           </button>
         </header>
-        <form className={styles.form()} onSubmit={formik.handleSubmit}>
+        <form className={styles.form()} onSubmit={handleSubmit}>
           <div className={styles.inputList()}>
             <TextInput
               required
               id="email"
               label="メールアドレス"
-              onChange={formik.handleChange}
               placeholder="メールアドレスを入力"
               type="email"
-              value={formik.values.email}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
-            <p className={styles.error()}>{formik.errors.email}</p>
+            <p className={styles.error()}>{emailError}</p>
 
             <TextInput
               required
               id="name"
               label="名前"
-              onChange={formik.handleChange}
               placeholder="名前を入力"
               type="text"
-              value={formik.values.name}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
-            <p className={styles.error()}>{formik.errors.name}</p>
+            <p className={styles.error()}></p>
 
             <TextInput
               required
               id="password"
               label="パスワード"
-              onChange={formik.handleChange}
               placeholder="パスワードを入力"
               type="password"
-              value={formik.values.password}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
-            <p className={styles.error()}>{formik.errors.password}</p>
+            <p className={styles.error()}>{passwordError}</p>
           </div>
           <div className={styles.submitButton()}>
             <PrimaryButton size="base" type="submit">
