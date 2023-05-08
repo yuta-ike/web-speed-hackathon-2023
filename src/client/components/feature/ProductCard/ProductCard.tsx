@@ -30,7 +30,7 @@ export const ProductCard: FC<Props> = ({ isInFirstView, product }) => {
               decoding="async"
               height={126}
               loading={isInFirstView ? undefined : 'lazy'}
-              src={thumbnailFile.filename}
+              src={thumbnailFile.filename.replace('.webp', '_mid.webp')}
               width={224}
             />
           </div>
