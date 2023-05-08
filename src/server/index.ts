@@ -27,10 +27,14 @@ async function init(): Promise<void> {
   const httpServer = http.createServer(app.callback());
 
   app.keys = ['cookie-key'];
-  app.use(logger());
+  if (process.env.NODE_ENV === 'development') {
+    app.use(logger());
+  }
+
   app.use(bodyParser());
   app.use(session({}, app));
 
+  // TODO: キャッシュの設定
   app.use(async (ctx, next) => {
     ctx.set('Cache-Control', 'no-store');
     await next();
