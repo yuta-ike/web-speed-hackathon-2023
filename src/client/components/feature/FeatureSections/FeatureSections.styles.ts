@@ -18,3 +18,7 @@ export const featureHeading = () => css`
   font-weight: 700;
   padding: 0 16px;
 `;
+
+export const fallback = () => css`
+  height: 100vh;
+`;

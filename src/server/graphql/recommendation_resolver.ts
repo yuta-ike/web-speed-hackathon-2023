@@ -7,7 +7,22 @@ export const recommendationResolver: GraphQLModelResolver<Recommendation> = {
   product: async (parent) => {
     const recommendation = await dataSource.manager.findOneOrFail(Recommendation, {
       relations: {
-        product: true,
+        product: {
+          media: true,
+        },
+      },
+      select: {
+        id: true,
+        product: {
+          id: true,
+          media: {
+            file: {
+              filename: true,
+            },
+            isThumbnail: true,
+          },
+          name: true,
+        },
       },
       where: { id: parent.id },
     });

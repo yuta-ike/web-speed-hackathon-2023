@@ -1,4 +1,4 @@
-import { lazy } from 'react';
+import { lazy, Suspense } from 'react';
 import { Route, Routes as RouterRoutes } from 'react-router-dom';
 
 import { Layout } from '../Layout';
@@ -23,11 +23,46 @@ export const Routes: FC = () => {
   return (
     <RouterRoutes>
       <Route path="/" element={<Layout />}>
-        <Route element={<Top />} path="/" />
-        <Route element={<ProductDetail />} path="/product/:productId" />
-        <Route element={<Order />} path="/order" />
-        <Route element={<OrderComplete />} path="/order/complete" />
-        <Route element={<NotFound />} path="*" />
+        <Route
+          element={
+            <Suspense fallback={null}>
+              <Top />
+            </Suspense>
+          }
+          path="/"
+        />
+        <Route
+          element={
+            <Suspense fallback={null}>
+              <ProductDetail />
+            </Suspense>
+          }
+          path="/product/:productId"
+        />
+        <Route
+          element={
+            <Suspense fallback={null}>
+              <Order />
+            </Suspense>
+          }
+          path="/order"
+        />
+        <Route
+          element={
+            <Suspense fallback={null}>
+              <OrderComplete />
+            </Suspense>
+          }
+          path="/order/complete"
+        />
+        <Route
+          element={
+            <Suspense fallback={null}>
+              <NotFound />
+            </Suspense>
+          }
+          path="*"
+        />
       </Route>
     </RouterRoutes>
   );

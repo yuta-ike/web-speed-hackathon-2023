@@ -1,13 +1,14 @@
-import { gql, useSuspenseQuery_experimental as useSuspenseQuery } from '@apollo/client';
+import { gql, useLazyQuery, useSuspenseQuery_experimental as useSuspenseQuery } from '@apollo/client';
+import { useEffect } from 'react';
 
 import type { GetFeatureSectionsQueryResponse } from '../graphql/queries';
 
 const Query = gql`
-  query GetFeatureSections {
-    features {
+  query GetFeatureSections($limit: Int, $itemLimit: Int) {
+    features(limit: $limit) {
       id
       title
-      items {
+      items(limit: $itemLimit) {
         id
         product {
           id
@@ -31,9 +32,17 @@ const Query = gql`
 `;
 
 export const useFeatures = () => {
-  const featuresResult = useSuspenseQuery<GetFeatureSectionsQueryResponse>(Query);
+  const featuresResult = useSuspenseQuery<GetFeatureSectionsQueryResponse>(Query, {
+    variables: { itemLimit: 10, limit: 3 },
+  });
 
-  const features = featuresResult.data?.features;
+  const [fetchAllFeatureSections, { data }] = useLazyQuery<GetFeatureSectionsQueryResponse>(Query, {});
 
-  return { features };
+  const initialFetchData = featuresResult.data?.features;
+
+  useEffect(() => {
+    fetchAllFeatureSections();
+  }, [fetchAllFeatureSections]);
+
+  return { features: data?.features ?? initialFetchData };
 };

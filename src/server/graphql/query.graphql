@@ -1,7 +1,7 @@
 type Query {
   product(id: Int!): Product!
   recommendations: [Recommendation!]!
-  features: [FeatureSection!]!
+  features(limit: Int): [FeatureSection!]!
   user(id: Int!): User!
   me: User
 }

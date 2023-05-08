@@ -5,11 +5,12 @@ import type { FeatureSection } from '../../model/feature_section';
 import type { GraphQLModelResolver } from './model_resolver';
 
 export const featureSectionResolver: GraphQLModelResolver<FeatureSection> = {
-  items: (parent) => {
+  items: async (parent, args) => {
     return dataSource.manager.find(FeatureItem, {
       relations: {
         product: true,
       },
+      take: args.limit,
       where: {
         section: parent,
       },

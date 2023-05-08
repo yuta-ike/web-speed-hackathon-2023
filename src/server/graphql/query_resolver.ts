@@ -16,8 +16,10 @@ type QueryResolver = {
 };
 
 export const queryResolver: QueryResolver = {
-  features: () => {
-    return dataSource.manager.find(FeatureSection);
+  features: (_parent, args: { limit?: number; itemLimit?: number }) => {
+    return dataSource.manager.find(FeatureSection, {
+      take: args.limit,
+    });
   },
   me: async (_parent, _args, { session }) => {
     if (session['userId'] == null) {
