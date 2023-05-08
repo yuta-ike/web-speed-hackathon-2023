@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 import { WidthRestriction } from '../../components/foundation/WidthRestriction';
 import { OrderForm } from '../../components/order/OrderForm';
@@ -16,21 +17,23 @@ import type { FC } from 'react';
 export const Order: FC = () => {
   const navigate = useNavigate();
 
-  const { authUser, authUserLoading, isAuthUser } = useAuthUser();
+  const { authUserLoading, isAuthUser } = useAuthUser();
   const { updateCartItem } = useUpdateCartItem();
   const { submitOrder } = useSubmitOrder();
   const { order } = useOrder();
 
-  if (authUserLoading) {
-    return null;
-  }
+  useEffect(() => {
+    if (!authUserLoading && !isAuthUser) {
+      navigate('/');
+    }
+  }, [authUserLoading, isAuthUser, navigate]);
+
   if (!isAuthUser) {
-    navigate('/');
     return null;
   }
 
   const renderContents = () => {
-    if (!authUser || order == undefined || order.items.length === 0) {
+    if (order == undefined || order.items.length === 0) {
       return (
         <div className={styles.emptyContainer()}>
           <p className={styles.emptyDescription()}>商品がカートに入っていません</p>
