@@ -97,9 +97,6 @@ dependencies:
   reflect-metadata:
     specifier: 0.1.13
     version: 0.1.13
-  setimmediate:
-    specifier: 1.0.5
-    version: 1.0.5
   sqlite3:
     specifier: 5.1.4
     version: 5.1.4
@@ -118,9 +115,6 @@ dependencies:
   zipcode-ja:
     specifier: 0.0.7
     version: 0.0.7
-  zod:
-    specifier: 3.21.4
-    version: 3.21.4
 
 devDependencies:
   '@babel/core':
@@ -6249,10 +6243,6 @@ packages:
     resolution: {integrity: sha512-KiKBS8AnWGEyLzofFfmvKwpdPzqiy16LvQfK3yv/fVH7Bj13/wl3JSR1J+rfgRE9q7xUJK4qvgS8raSOeLUehw==}
     dev: false
 
-  /setimmediate@1.0.5:
-    resolution: {integrity: sha512-MATJdZp8sLqDl/68LfQmbP8zKPLQNV6BIZoIgrscFDQ+RsvK/BxeDQOgyxKKoh0y/8h3BqVFnCqQ/gd+reiIXA==}
-    dev: false
-
   /setprototypeof@1.1.0:
     resolution: {integrity: sha512-BvE/TwpZX4FXExxOxZyRGQQv651MSwmWKZGqvmPcRIjDqWub67kTKuIMx43cZZrS/cBBzwBcNDWoFxt2XEFIpQ==}
     dev: false
@@ -7549,8 +7539,4 @@ packages:
 
   /zipcode-ja@0.0.7:
     resolution: {integrity: sha512-DJw7EUtu8aCwBrtlDwD/y2owHlkgNDmuC981eDz9EadDd/7/YofvFveImE+nFij0ftVQnZasyrAmW/HC6oIMcA==}
-    dev: false
-
-  /zod@3.21.4:
-    resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
     dev: false

@@ -10,6 +10,11 @@ export const useSlider = ({ items }: { items: unknown[] }) => {
   const slideIndex = Math.min(Math.max(0, _slideIndex), items.length - 1);
 
   useEffect(() => {
+    setVisibleItemCount(() => {
+      const containerWidth = containerElementRef.current?.getBoundingClientRect().width ?? 0;
+      return Math.max(Math.floor(containerWidth / ITEM_MIN_WIDTH), 1);
+    });
+
     const updateVisibleItemCount = throttle(500, () => {
       setVisibleItemCount(() => {
         const containerWidth = containerElementRef.current?.getBoundingClientRect().width ?? 0;
@@ -17,16 +22,9 @@ export const useSlider = ({ items }: { items: unknown[] }) => {
       });
     });
 
-    let timer = (function tick() {
-      return setImmediate(() => {
-        updateVisibleItemCount();
-        timer = tick();
-      });
-    })();
+    window.addEventListener('resize', updateVisibleItemCount);
 
-    return () => {
-      clearImmediate(timer);
-    };
+    return () => window.removeEventListener('resize', updateVisibleItemCount);
   }, []);
 
   return {
