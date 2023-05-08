@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
+import { useMemo } from 'react';
 
 import { WidthRestriction } from '../../components/foundation/WidthRestriction';
 import { ProductMediaListPreviewer } from '../../components/product/ProductMediaListPreviewer';
@@ -7,7 +8,6 @@ import { ProductOverview } from '../../components/product/ProductOverview';
 import { ProductPurchaseSection } from '../../components/product/ProductPurchaseSeciton';
 import { ReviewSection } from '../../components/review/ReviewSection';
 import { useActiveOffer } from '../../hooks/useActiveOffer';
-import { useAmountInCart } from '../../hooks/useAmountInCart';
 import { useAuthUser } from '../../hooks/useAuthUser';
 import { useProduct } from '../../hooks/useProduct';
 import { useReviews } from '../../hooks/useReviews';
@@ -25,12 +25,18 @@ export const ProductDetail: FC = () => {
 
   const { product } = useProduct(Number(productId));
   const { reviews } = useReviews(product?.id);
-  const { isAuthUser } = useAuthUser();
+  const { authUser, isAuthUser } = useAuthUser();
   const { sendReview } = useSendReview();
   const { updateCartItem } = useUpdateCartItem();
   const handleOpenModal = useOpenModal();
-  const { amountInCart } = useAmountInCart(Number(productId));
+  // const { amountInCart } = useAmountInCart(Number(productId));
   const { activeOffer } = useActiveOffer(product);
+
+  const amountInCart = useMemo(() => {
+    const order = authUser?.orders.find((order) => order.isOrdered === false);
+    const shoppingCartItems = order?.items ?? [];
+    return shoppingCartItems.find((item) => item.product.id === Number(productId))?.amount ?? 0;
+  }, [authUser?.orders, productId]);
 
   const handleSubmitReview = ({ comment }: { comment: string }) => {
     sendReview({

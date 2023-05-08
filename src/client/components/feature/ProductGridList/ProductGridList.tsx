@@ -15,10 +15,10 @@ export const ProductGridList: FC<Props> = ({ featureSection, isInFirstView }) =>
 
   return (
     <ul className={styles.cardList()}>
-      {products.map((product) => {
+      {products.map((product, index) => {
         return (
           <li key={product.id} className={styles.cardListItem()}>
-            <ProductCard isInFirstView={isInFirstView} product={product} />
+            <ProductCard isInFirstView={isInFirstView && index <= 5} product={product} />
           </li>
         );
       })}

@@ -1,12 +1,28 @@
-import { useSuspenseQuery_experimental as useSuspenseQuery } from '@apollo/client';
+import { gql, useSuspenseQuery_experimental as useSuspenseQuery } from '@apollo/client';
 import { Temporal } from '@js-temporal/polyfill';
-
-import { GetRecommendationsQuery } from '../graphql/queries';
 
 import type { GetRecommendationsQueryResponse } from '../graphql/queries';
 
+const Query = gql`
+  query GetRecommendations {
+    recommendations {
+      id
+      product {
+        id
+        media {
+          isThumbnail
+          file {
+            filename
+          }
+        }
+        name
+      }
+    }
+  }
+`;
+
 export const useRecommendation = () => {
-  const recommendationsResult = useSuspenseQuery<GetRecommendationsQueryResponse>(GetRecommendationsQuery);
+  const recommendationsResult = useSuspenseQuery<GetRecommendationsQueryResponse>(Query);
 
   const hour = Temporal.Now.plainTimeISO().hour;
   const recommendations = recommendationsResult?.data?.recommendations;

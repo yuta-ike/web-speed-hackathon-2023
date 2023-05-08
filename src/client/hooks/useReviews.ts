@@ -1,15 +1,33 @@
-import { useLazyQuery } from '@apollo/client';
+import { gql, useLazyQuery } from '@apollo/client';
 import { useEffect } from 'react';
 import { useErrorHandler } from 'react-error-boundary';
 
-import { GetProductReviewsQuery } from '../graphql/queries';
-
 import type { GetProductReviewsQueryResponse } from '../graphql/queries';
+
+const Query = gql`
+  query GetProductReviews($productId: Int!) {
+    product(id: $productId) {
+      reviews {
+        id
+        comment
+        postedAt
+        user {
+          id
+          profile {
+            avatar {
+              filename
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 
 export const useReviews = (productId: number | undefined) => {
   const handleError = useErrorHandler();
 
-  const [loadReviews, reviewsResult] = useLazyQuery<GetProductReviewsQueryResponse>(GetProductReviewsQuery, {
+  const [loadReviews, reviewsResult] = useLazyQuery<GetProductReviewsQueryResponse>(Query, {
     onError: handleError,
     variables: {
       productId,

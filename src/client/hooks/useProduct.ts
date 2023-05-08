@@ -1,13 +1,32 @@
-import { useQuery } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
 import { useErrorHandler } from 'react-error-boundary';
-
-import { GetProductDetailsQuery } from '../graphql/queries';
 
 import type { GetProductDetailsQueryResponse } from '../graphql/queries';
 
+const Query = gql`
+  query GetProductDetails($productId: Int!) {
+    product(id: $productId) {
+      description
+      id
+      media {
+        file {
+          filename
+        }
+      }
+      name
+      offers {
+        endDate
+        price
+        startDate
+      }
+      price
+    }
+  }
+`;
+
 export const useProduct = (productId: number) => {
   const handleError = useErrorHandler();
-  const productResult = useQuery<GetProductDetailsQueryResponse>(GetProductDetailsQuery, {
+  const productResult = useQuery<GetProductDetailsQueryResponse>(Query, {
     onError: handleError,
     variables: {
       productId,

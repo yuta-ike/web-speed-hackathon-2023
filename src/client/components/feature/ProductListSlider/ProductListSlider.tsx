@@ -41,7 +41,7 @@ export const ProductListSlider: FC<Props> = ({ featureSection, isInFirstView }) 
                   [styles.item__hidden()]: hidden,
                 })}
               >
-                <ProductCard product={product} isInFirstView={isInFirstView} />
+                <ProductCard product={product} isInFirstView={isInFirstView && index < 12} />
               </li>
             );
           })}
