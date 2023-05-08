@@ -7,12 +7,14 @@ import * as styles from './Layout.styles';
 
 import type { FC } from 'react';
 
-export const Layout: FC = () => (
+export type LayoutProps = {
+  children?: React.ReactNode;
+};
+
+export const Layout: FC<LayoutProps> = ({ children }) => (
   <>
     <Header />
-    <main className={styles.container()}>
-      <Outlet />
-    </main>
+    <main className={styles.container()}>{children ?? <Outlet />}</main>
     <Footer />
   </>
 );
