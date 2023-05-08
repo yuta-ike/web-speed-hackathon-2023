@@ -18,7 +18,8 @@
     "format:stylelint": "stylelint --ignore-path .gitignore --fix './**/styles.{js,ts}' './**/*.styles.{js,ts}' './**/*.css'",
     "seed": "npm-run-all -s clear:database seed:database",
     "seed:database": "cross-env SEED_BASE_UNIXTIME=1677855600 ts-node tools/seed.ts",
-    "clear:database": "rm -f ./databases/database.sqlite"
+    "clear:database": "rm -f ./databases/database.sqlite",
+    "test": "vitest"
   },
   "dependencies": {
     "@apollo/client": "3.8.0-alpha.7",
@@ -111,7 +112,8 @@
     "vite": "4.1.4",
     "vite-plugin-ejs": "1.6.4",
     "vite-plugin-top-level-await": "1.2.4",
-    "vite-plugin-wasm": "3.2.1"
+    "vite-plugin-wasm": "3.2.1",
+    "vitest": "0.31.0"
   },
   "packageManager": "pnpm@7.24.3",
   "engines": {
