@@ -1,6 +1,4 @@
 import { useFormik } from 'formik';
-import isEqual from 'lodash.isequal';
-import { memo } from 'react';
 
 import { PrimaryButton } from '../../foundation/PrimaryButton';
 import { TextArea } from '../../foundation/TextArea';
@@ -26,7 +24,7 @@ type ReviewForm = {
   comment: string;
 };
 
-export const ReviewSection: FC<Props> = memo(({ hasSignedIn, onSubmitReview, reviews }) => {
+export const ReviewSection: FC<Props> = ({ hasSignedIn, onSubmitReview, reviews }) => {
   const formik = useFormik<ReviewForm>({
     initialValues: {
       comment: '',
@@ -71,6 +69,6 @@ export const ReviewSection: FC<Props> = memo(({ hasSignedIn, onSubmitReview, rev
       )}
     </div>
   );
-}, isEqual);
+};
 
 ReviewSection.displayName = 'ReviewSection';

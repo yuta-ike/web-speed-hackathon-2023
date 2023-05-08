@@ -1,6 +1,4 @@
 import classNames from 'classnames';
-import isEqual from 'lodash.isequal';
-import { memo } from 'react';
 
 import { Anchor } from '../../foundation/Anchor';
 import { DeviceType, GetDeviceType } from '../../foundation/GetDeviceType';
@@ -18,7 +16,7 @@ type Props = {
   title: string;
 };
 
-export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
+export const ProductHeroImage: FC<Props> = ({ product, title }) => {
   const thumbnailFile = product.media.find((productMedia) => productMedia.isThumbnail)?.file;
 
   return (
@@ -60,6 +58,6 @@ export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
       }}
     </GetDeviceType>
   );
-}, isEqual);
+};
 
 ProductHeroImage.displayName = 'ProductHeroImage';

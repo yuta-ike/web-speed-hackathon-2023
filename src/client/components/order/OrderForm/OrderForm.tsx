@@ -1,5 +1,4 @@
 import { useFormik } from 'formik';
-import cloneDeep from 'lodash.clonedeep';
 
 import { PrimaryButton } from '../../foundation/PrimaryButton';
 import { TextInput } from '../../foundation/TextInput';
@@ -33,11 +32,10 @@ export const OrderForm: FC<Props> = ({ onSubmit }) => {
   const handleZipcodeChange: ChangeEventHandler<HTMLInputElement> = async (event) => {
     formik.handleChange(event);
 
-    // TODO: バンドルサイズ大きいのでAPI化する
     const zipcodeJa = await import('zipcode-ja').then((m) => m.default);
 
     const zipCode = event.target.value;
-    const address = [...(cloneDeep(zipcodeJa)[zipCode]?.address ?? [])];
+    const address = [...(zipcodeJa[zipCode]?.address ?? [])];
     const prefecture = address.shift();
     const city = address.join(' ');
 

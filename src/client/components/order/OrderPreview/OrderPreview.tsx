@@ -1,6 +1,4 @@
 import * as currencyFormatter from 'currency-formatter';
-import isEqual from 'lodash.isequal';
-import { memo } from 'react';
 
 import { useTotalPrice } from '../../../hooks/useTotalPrice';
 import { CartItem } from '../CartItem';
@@ -16,7 +14,7 @@ type Props = {
   onRemoveCartItem: (productId: number) => void;
 };
 
-export const OrderPreview: FC<Props> = memo(({ onRemoveCartItem, onUpdateCartItem, order }) => {
+export const OrderPreview: FC<Props> = ({ onRemoveCartItem, onUpdateCartItem, order }) => {
   const { totalPrice } = useTotalPrice(order);
 
   return (
@@ -33,6 +31,6 @@ export const OrderPreview: FC<Props> = memo(({ onRemoveCartItem, onUpdateCartIte
       <p className={styles.totalPrice()}>{currencyFormatter.format(totalPrice, { code: 'JPY', precision: 0 })}</p>
     </div>
   );
-}, isEqual);
+};
 
 OrderPreview.displayName = 'OrderPreview';

@@ -1,6 +1,4 @@
 import * as currencyFormatter from 'currency-formatter';
-import isEqual from 'lodash.isequal';
-import { memo } from 'react';
 
 import { ProductOfferLabel } from '../ProductOfferLabel';
 
@@ -14,7 +12,7 @@ type Props = {
   activeOffer: LimitedTimeOfferFragmentResponse | undefined;
 };
 
-export const ProductOverview: FC<Props> = memo(({ activeOffer, product }) => {
+export const ProductOverview: FC<Props> = ({ activeOffer, product }) => {
   if (product === undefined) {
     return null;
   }
@@ -60,6 +58,6 @@ export const ProductOverview: FC<Props> = memo(({ activeOffer, product }) => {
       </div>
     </div>
   );
-}, isEqual);
+};
 
 ProductOverview.displayName = 'ProductOverview';

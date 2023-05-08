@@ -1,6 +1,3 @@
-import isEqual from 'lodash.isequal';
-import { memo } from 'react';
-
 import { DeviceType, GetDeviceType } from '../../foundation/GetDeviceType';
 import { ProductGridList } from '../ProductGridList';
 import { ProductListSlider } from '../ProductListSlider';
@@ -13,7 +10,7 @@ type Props = {
   featureSection: FeatureSectionFragmentResponse;
 };
 
-export const ProductList: FC<Props> = memo(({ featureSection, isInFirstView }) => {
+export const ProductList: FC<Props> = ({ featureSection, isInFirstView }) => {
   return (
     <GetDeviceType>
       {({ deviceType }) => {
@@ -28,6 +25,6 @@ export const ProductList: FC<Props> = memo(({ featureSection, isInFirstView }) =
       }}
     </GetDeviceType>
   );
-}, isEqual);
+};
 
 ProductList.displayName = 'ProductList';
