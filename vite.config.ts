@@ -24,6 +24,7 @@ export default defineConfig(async ({ mode }) => {
   return {
     build: {
       assetsInlineLimit: 20480,
+      minify: process.env.NODE_ENV !== 'development',
       rollupOptions: {
         output: {
           experimentalMinChunkSize: 40960,

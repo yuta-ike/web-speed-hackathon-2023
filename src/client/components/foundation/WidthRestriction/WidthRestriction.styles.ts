@@ -6,5 +6,5 @@ export const container = () => css`
 
 export const inner = () => css`
   margin: 0 auto;
-  max-width: 1024;
+  max-width: 1024px;
 `;

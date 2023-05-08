@@ -1,6 +1,6 @@
-import { Component } from 'react';
+import { useDeviceType } from '../../../hooks/useDeviceType';
 
-import type { ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
 
 export const DeviceType = {
   DESKTOP: 'DESKTOP',
@@ -12,37 +12,7 @@ type Props = {
   children: ({ deviceType }: { deviceType: DeviceType }) => ReactNode;
 };
 
-export class GetDeviceType extends Component<Props> {
-  private _timer: number | null;
-  private _windowWidth: number;
-
-  constructor(props: Props) {
-    super(props);
-    this._windowWidth = window.innerWidth;
-    this._timer = null;
-  }
-
-  componentDidMount(): void {
-    this._checkIsDesktop();
-  }
-
-  componentWillUnmount(): void {
-    if (this._timer != null) {
-      window.clearImmediate(this._timer);
-    }
-  }
-
-  private _checkIsDesktop() {
-    this._windowWidth = window.innerWidth;
-    this.forceUpdate(() => {
-      this._timer = window.setImmediate(this._checkIsDesktop.bind(this));
-    });
-  }
-
-  render() {
-    const { children: render } = this.props;
-    return render({
-      deviceType: this._windowWidth >= 1024 ? DeviceType.DESKTOP : DeviceType.MOBILE,
-    });
-  }
-}
+export const GetDeviceType: FC<Props> = ({ children: render }) => {
+  const deviceType = useDeviceType();
+  return <>{render({ deviceType }) ?? null}</>;
+};
