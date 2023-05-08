@@ -127,9 +127,6 @@ dependencies:
   zipcode-ja:
     specifier: 0.0.7
     version: 0.0.7
-  zod:
-    specifier: 3.20.6
-    version: 3.20.6
 
 devDependencies:
   '@babel/core':
@@ -7576,8 +7573,4 @@ packages:
 
   /zipcode-ja@0.0.7:
     resolution: {integrity: sha512-DJw7EUtu8aCwBrtlDwD/y2owHlkgNDmuC981eDz9EadDd/7/YofvFveImE+nFij0ftVQnZasyrAmW/HC6oIMcA==}
-    dev: false
-
-  /zod@3.20.6:
-    resolution: {integrity: sha512-oyu0m54SGCtzh6EClBVqDDlAYRz4jrVtKwQ7ZnsEmMI9HnzuZFj8QFwAY1M5uniIYACdGvv0PBWPF2kO0aNofA==}
     dev: false
