@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import { PrimaryButton } from '../../foundation/PrimaryButton';
 import { TextInput } from '../../foundation/TextInput';
+import { fetchZipcodeJa } from '../../../utils/fetchZipcode';
 
 import * as styles from './OrderForm.styles';
 
@@ -28,14 +29,21 @@ export const OrderForm: FC<Props> = ({ onSubmit }) => {
     const zipCode = event.target.value;
     setZipCode(zipCode);
 
-    const zipcodeJa = await import('zipcode-ja').then((m) => m.default);
+    if (6 <= zipCode.length) {
+      const zipcodeJa = await fetchZipcodeJa(zipCode.slice(0, 6));
+      if (zipcodeJa == null) {
+        return;
+      }
 
-    const address = [...(zipcodeJa[zipCode]?.address ?? [])];
-    const prefecture = address.shift();
-    const city = address.join(' ');
+      if (7 <= zipCode.length) {
+        const address = zipcodeJa[Number(zipCode[6])];
+        const prefecture = address.shift() as string;
+        const city = address.join(' ');
 
-    setPrefecture(prefecture);
-    setCity(city);
+        setPrefecture(prefecture);
+        setCity(city);
+      }
+    }
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {

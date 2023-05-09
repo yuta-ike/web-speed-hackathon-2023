@@ -18,8 +18,6 @@ export const MediaItem: FC<Props> = ({ file }) => {
       ? file.filename.replace('_1024.webp', '_thumb.webp')
       : file.filename.replace('.webm', '_thumb.webp').replace('/videos', '/images/video_thumb');
 
-  console.log(file.filename, imageSrc);
-
   return (
     <div className={styles.container()}>
       {imageSrc != null && <Image fill src={imageSrc} width="40px" height="40px" />}
