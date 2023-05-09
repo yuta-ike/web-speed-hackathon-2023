@@ -1,6 +1,5 @@
 import { Temporal } from '@js-temporal/polyfill';
 
-import { AspectRatio } from '../../foundation/AspectRatio';
 import { Image } from '../../foundation/Image';
 import { useReviews } from '../../../hooks/useReviews';
 
@@ -31,9 +30,7 @@ export const ReviewList: FC<Props> = ({ productId }) => {
         return (
           <li key={review.id} className={styles.item()} data-testid="review-list-item">
             <div className={styles.avaterImage()}>
-              <AspectRatio ratioHeight={1} ratioWidth={1}>
-                <Image height={52} src={review.user.profile.avatar.filename} width={52} />
-              </AspectRatio>
+              <Image width={52} height={52} src={review.user.profile.avatar.filename.replace('.webp', '_icon.webp')} />
             </div>
             <div className={styles.content()}>
               <time className={styles.time()}>{endTime}</time>
