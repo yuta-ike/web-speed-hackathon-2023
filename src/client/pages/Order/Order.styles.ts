@@ -37,3 +37,8 @@ export const emptyDescription = () => css`
   padding: 80px 0;
   text-align: center;
 `;
+
+export const fallback = () => css`
+  height: 100vh;
+  width: 1px;
+`;

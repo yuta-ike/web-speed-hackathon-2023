@@ -17,10 +17,10 @@ import type { FC } from 'react';
 export const Order: FC = () => {
   const navigate = useNavigate();
 
+  const { order } = useOrder();
   const { authUserLoading, isAuthUser } = useAuthUser();
   const { updateCartItem } = useUpdateCartItem();
   const { submitOrder } = useSubmitOrder();
-  const { order } = useOrder();
 
   useEffect(() => {
     if (!authUserLoading && !isAuthUser) {
@@ -28,12 +28,8 @@ export const Order: FC = () => {
     }
   }, [authUserLoading, isAuthUser, navigate]);
 
-  if (!isAuthUser) {
-    return null;
-  }
-
   const renderContents = () => {
-    if (order == undefined || order.items.length === 0) {
+    if (order != null && order.items.length === 0) {
       return (
         <div className={styles.emptyContainer()}>
           <p className={styles.emptyDescription()}>商品がカートに入っていません</p>
@@ -45,25 +41,29 @@ export const Order: FC = () => {
       <div className={styles.container()}>
         <div className={styles.cart()}>
           <h2 className={styles.cartHeading()}>カート</h2>
-          <OrderPreview
-            onRemoveCartItem={(productId) => {
-              updateCartItem({
-                variables: {
-                  amount: 0,
-                  productId,
-                },
-              });
-            }}
-            onUpdateCartItem={(productId, amount) => {
-              updateCartItem({
-                variables: {
-                  amount,
-                  productId,
-                },
-              });
-            }}
-            order={order}
-          />
+          {order != null ? (
+            <OrderPreview
+              onRemoveCartItem={(productId) => {
+                updateCartItem({
+                  variables: {
+                    amount: 0,
+                    productId,
+                  },
+                });
+              }}
+              onUpdateCartItem={(productId, amount) => {
+                updateCartItem({
+                  variables: {
+                    amount,
+                    productId,
+                  },
+                });
+              }}
+              order={order}
+            />
+          ) : (
+            <div className={styles.fallback()} />
+          )}
         </div>
 
         <div className={styles.addressForm()}>
