@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import * as currencyFormatter from 'currency-formatter';
 
 import { useActiveOffer } from '../../../hooks/useActiveOffer';
@@ -31,71 +30,54 @@ export const CartItem: FC<Props> = ({ item, onRemove, onUpdate }) => {
   };
 
   return (
-    <GetDeviceType>
-      {({ deviceType }) => {
-        return (
-          <div
-            className={classNames(styles.container(), {
-              [styles.container__desktop()]: deviceType === DeviceType.DESKTOP,
-              [styles.container__mobile()]: deviceType === DeviceType.MOBILE,
-            })}
-          >
-            <div className={styles.item()}>
-              <Anchor href={`/product/${item.product.id}`}>
-                <div className={styles.itemInner()}>
-                  {thumbnailFile ? (
-                    <div
-                      className={classNames(styles.thumbnail(), {
-                        [styles.thumbnail__desktop()]: deviceType === DeviceType.DESKTOP,
-                        [styles.thumbnail__mobile()]: deviceType === DeviceType.MOBILE,
-                      })}
-                    >
+    <div className={styles.container()}>
+      <div className={styles.item()}>
+        <Anchor href={`/product/${item.product.id}`}>
+          <div className={styles.itemInner()}>
+            {thumbnailFile ? (
+              <div className={styles.thumbnail()}>
+                <GetDeviceType>
+                  {({ deviceType }) => {
+                    return (
                       <Image
                         fill
                         src={thumbnailFile.filename}
                         width={deviceType === DeviceType.DESKTOP ? '256px' : '50%'}
                         height={deviceType === DeviceType.DESKTOP ? '144px' : undefined}
                       />
-                      {activeOffer !== undefined && (
-                        <div className={styles.offerLabel()}>
-                          <ProductOfferLabel size="base">タイムセール中</ProductOfferLabel>
-                        </div>
-                      )}
-                    </div>
-                  ) : null}
-                  <div className={styles.details()}>
-                    <p className={styles.itemName()}>{item.product.name}</p>
-                    <p className={styles.itemPrice()}>
-                      {currencyFormatter.format(price, { code: 'JPY', precision: 0 })}
-                    </p>
+                    );
+                  }}
+                </GetDeviceType>
+                {activeOffer !== undefined && (
+                  <div className={styles.offerLabel()}>
+                    <ProductOfferLabel size="base">タイムセール中</ProductOfferLabel>
                   </div>
-                </div>
-              </Anchor>
-            </div>
-            <div
-              className={classNames(styles.container(), {
-                [styles.controller__desktop()]: deviceType === DeviceType.DESKTOP,
-                [styles.controller__mobile()]: deviceType === DeviceType.MOBILE,
-              })}
-            >
-              <label className={styles.counter()}>
-                個数:
-                <input
-                  className={styles.counterInput()}
-                  defaultValue={item.amount}
-                  max={999}
-                  min={1}
-                  onBlur={updateCount}
-                  type="number"
-                />
-              </label>
-              <OutlineButton onClick={() => onRemove(item.product.id)} size="base">
-                削除
-              </OutlineButton>
+                )}
+              </div>
+            ) : null}
+            <div className={styles.details()}>
+              <p className={styles.itemName()}>{item.product.name}</p>
+              <p className={styles.itemPrice()}>{currencyFormatter.format(price, { code: 'JPY', precision: 0 })}</p>
             </div>
           </div>
-        );
-      }}
-    </GetDeviceType>
+        </Anchor>
+      </div>
+      <div className={styles.controller()}>
+        <label className={styles.counter()}>
+          個数:
+          <input
+            className={styles.counterInput()}
+            defaultValue={item.amount}
+            max={999}
+            min={1}
+            onBlur={updateCount}
+            type="number"
+          />
+        </label>
+        <OutlineButton onClick={() => onRemove(item.product.id)} size="base">
+          削除
+        </OutlineButton>
+      </div>
+    </div>
   );
 };
