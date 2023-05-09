@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import classNames from 'classnames';
 
 import { loadFonts } from '../../utils/load_fonts';

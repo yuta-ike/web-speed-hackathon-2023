@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { Suspense } from 'react';
 
 import { ProductHeroImage, ProductHeroImageFallback } from '../../components/product/ProductHeroImage';
