@@ -7,6 +7,7 @@ import { useRecommendation } from '../../../hooks/useRecommendation';
 
 import * as styles from './ProductHeroImage.styles';
 
+import type { MediaFileFragmentResponse } from '../../../graphql/fragments';
 import type { FC } from 'react';
 
 const EMPTY_IMAGE_SRC = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
@@ -24,7 +25,7 @@ export const ProductHeroImage: FC<Props> = ({ title: _title }) => {
 
   const product = recommendationData.recommendation.product;
 
-  const thumbnailFile = product.media.find((productMedia) => productMedia.isThumbnail)?.file;
+  const thumbnailFile = (product as any).thumbnail.file as MediaFileFragmentResponse;
 
   const title = _title ?? product.name;
 
@@ -42,9 +43,9 @@ export const ProductHeroImage: FC<Props> = ({ title: _title }) => {
                   srcSet={
                     thumbnailFile == null
                       ? EMPTY_IMAGE_SRC
-                      : `${thumbnailFile.filename.replace('.webp', '_400.webp')} 400w,` +
-                        `${thumbnailFile.filename.replace('.webp', '_800.webp')} 800w,` +
-                        `${thumbnailFile.filename.replace('.webp', '_1024.webp')} 1024w`
+                      : `${thumbnailFile.filename.replace('_1024.webp', '_400.webp')} 400w,` +
+                        `${thumbnailFile.filename.replace('_1024.webp', '_800.webp')} 800w,` +
+                        `${thumbnailFile.filename} 1024w`
                   }
                 />
 

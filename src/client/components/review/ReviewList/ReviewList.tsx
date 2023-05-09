@@ -9,7 +9,6 @@ import type { FC } from 'react';
 
 type Props = {
   productId: number;
-  // reviews: ReviewFragmentResponse[];
 };
 
 export const ReviewList: FC<Props> = ({ productId }) => {
@@ -30,7 +29,7 @@ export const ReviewList: FC<Props> = ({ productId }) => {
         return (
           <li key={review.id} className={styles.item()} data-testid="review-list-item">
             <div className={styles.avaterImage()}>
-              <Image width={52} height={52} src={review.user.profile.avatar.filename.replace('.webp', '_icon.webp')} />
+              <Image width={52} height={52} src={review.user.profile.avatar.filename} />
             </div>
             <div className={styles.content()}>
               <time className={styles.time()}>{endTime}</time>

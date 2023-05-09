@@ -10,6 +10,7 @@ export const userResolver: GraphQLModelResolver<User> = {
   orders: (parent) => {
     return dataSource.manager.find(Order, {
       where: {
+        isOrdered: false,
         user: parent,
       },
     });

@@ -28,4 +28,12 @@ export const productResolver: GraphQLModelResolver<Product> = {
       },
     });
   },
+  thumbnail: (parent) => {
+    return dataSource.manager.findOneOrFail(ProductMedia, {
+      where: {
+        isThumbnail: true,
+        product: parent,
+      },
+    });
+  },
 };

@@ -1,4 +1,4 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn, type Relation } from 'typeorm';
+import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn, type Relation } from 'typeorm';
 
 import { LimitedTimeOffer } from './limited_time_offer';
 import { ProductMedia } from './product_media';
@@ -17,6 +17,9 @@ export class Product {
 
   @Column()
   description!: string;
+
+  @OneToOne(() => ProductMedia, (media) => media.product)
+  thumbnail!: Relation<ProductMedia>;
 
   @OneToMany(() => ProductMedia, (media) => media.product)
   media!: Relation<ProductMedia[]>;

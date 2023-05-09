@@ -4,6 +4,7 @@ type Product {
   price: Int!
   description: String!
   media: [ProductMedia!]!
+  thumbnail: ProductMedia!
   offers: [LimitedTimeOffer!]!
   reviews: [Review!]!
 }

@@ -12,11 +12,11 @@ const Query = gql`
         id
         product {
           id
-          media {
+          thumbnail {
+            id
             file {
               filename
             }
-            isThumbnail
           }
           name
           price

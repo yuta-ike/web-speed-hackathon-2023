@@ -29,7 +29,7 @@ export const Order: FC = () => {
   }, [authUserLoading, isAuthUser, navigate]);
 
   const renderContents = () => {
-    if (order != null && order.items.length === 0) {
+    if (order != null && order.length === 0) {
       return (
         <div className={styles.emptyContainer()}>
           <p className={styles.emptyDescription()}>商品がカートに入っていません</p>
@@ -59,7 +59,7 @@ export const Order: FC = () => {
                   },
                 });
               }}
-              order={order}
+              orderItems={order}
             />
           ) : (
             <div className={styles.fallback()} />

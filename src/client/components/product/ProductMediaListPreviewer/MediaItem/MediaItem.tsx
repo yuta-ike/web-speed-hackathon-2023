@@ -15,8 +15,10 @@ export const MediaItem: FC<Props> = ({ file }) => {
   const mediaType = getMediaType(file.filename);
   const imageSrc =
     mediaType === 'image'
-      ? file.filename.replace('.webp', '_thumb.webp')
-      : file.filename.replace('.webm', '_thumb.webp');
+      ? file.filename.replace('_1024.webp', '_thumb.webp')
+      : file.filename.replace('.webm', '_thumb.webp').replace('/videos', '/images/video_thumb');
+
+  console.log(file.filename, imageSrc);
 
   return (
     <div className={styles.container()}>

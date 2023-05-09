@@ -7,7 +7,7 @@ import { ProductOfferLabel } from '../../product/ProductOfferLabel';
 
 import * as styles from './ProductCard.styles';
 
-import type { ProductFragmentResponse } from '../../../graphql/fragments';
+import type { MediaFileFragmentResponse, ProductFragmentResponse } from '../../../graphql/fragments';
 import type { FC } from 'react';
 
 type Props = {
@@ -16,7 +16,7 @@ type Props = {
 };
 
 export const ProductCard: FC<Props> = ({ isInFirstView, product }) => {
-  const thumbnailFile = product.media.find((productMedia) => productMedia.isThumbnail)?.file;
+  const thumbnailFile = (product as any).thumbnail.file as MediaFileFragmentResponse;
 
   const { activeOffer } = useActiveOffer(product);
   const price = activeOffer?.price ?? product.price;
@@ -30,7 +30,7 @@ export const ProductCard: FC<Props> = ({ isInFirstView, product }) => {
               decoding="async"
               height={126}
               loading={isInFirstView ? undefined : 'lazy'}
-              src={thumbnailFile.filename.replace('.webp', '_mid.webp')}
+              src={thumbnailFile.filename.replace('_1024.webp', '_mid.webp')}
               width={224}
             />
           </div>

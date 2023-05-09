@@ -10,7 +10,7 @@ import { ProductOfferLabel } from '../../product/ProductOfferLabel';
 
 import * as styles from './CartItem.styles';
 
-import type { ShoppingCartItemFragmentResponse } from '../../../graphql/fragments';
+import type { MediaFileFragmentResponse, ShoppingCartItemFragmentResponse } from '../../../graphql/fragments';
 import type { ChangeEventHandler, FC } from 'react';
 
 type Props = {
@@ -20,7 +20,7 @@ type Props = {
 };
 
 export const CartItem: FC<Props> = ({ item, onRemove, onUpdate }) => {
-  const thumbnailFile = item.product.media.find((productMedia) => productMedia.isThumbnail)?.file;
+  const thumbnailFile = (item.product as any).thumbnail.file as MediaFileFragmentResponse;
   const { activeOffer } = useActiveOffer(item.product);
   const price = activeOffer?.price ?? item.product.price;
 

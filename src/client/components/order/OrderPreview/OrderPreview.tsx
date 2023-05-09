@@ -5,22 +5,22 @@ import { CartItem } from '../CartItem';
 
 import * as styles from './OrderPreview.styles';
 
-import type { OrderFragmentResponse } from '../../../graphql/fragments';
+import type { ShoppingCartItemFragmentResponse } from '../../../graphql/fragments';
 import type { FC } from 'react';
 
 type Props = {
-  order: OrderFragmentResponse;
+  orderItems: ShoppingCartItemFragmentResponse[];
   onUpdateCartItem: (productId: number, amount: number) => void;
   onRemoveCartItem: (productId: number) => void;
 };
 
-export const OrderPreview: FC<Props> = ({ onRemoveCartItem, onUpdateCartItem, order }) => {
-  const { totalPrice } = useTotalPrice(order);
+export const OrderPreview: FC<Props> = ({ onRemoveCartItem, onUpdateCartItem, orderItems }) => {
+  const { totalPrice } = useTotalPrice(orderItems);
 
   return (
     <div className={styles.container()}>
       <ul className={styles.itemList()}>
-        {order.items.map((item) => {
+        {orderItems.map((item) => {
           return (
             <li key={item.product.id}>
               <CartItem item={item} onRemove={onRemoveCartItem} onUpdate={onUpdateCartItem} />

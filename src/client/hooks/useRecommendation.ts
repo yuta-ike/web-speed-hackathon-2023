@@ -9,8 +9,8 @@ const Query = gql`
       id
       product {
         id
-        media {
-          isThumbnail
+        thumbnail {
+          id
           file {
             filename
           }
