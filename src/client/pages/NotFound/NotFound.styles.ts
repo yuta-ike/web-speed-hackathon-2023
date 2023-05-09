@@ -19,8 +19,16 @@ export const mainParagraph = () => css`
   font-weight: 700;
 `;
 
+export const mainParagraphFallback = () => css`
+  height: 1lh;
+`;
+
 export const subParagraph = () => css`
   color: #222222;
   font-family: 'Noto Serif JP', sans-serif;
   font-size: 0.875rem;
+`;
+
+export const subParagraphFallback = () => css`
+  height: 1lh;
 `;

@@ -5,7 +5,7 @@ import { TextInput } from '../../foundation/TextInput';
 
 import * as styles from './OrderForm.styles';
 
-import type { ChangeEventHandler, FC } from 'react';
+import type { ChangeEventHandler, FC, FormEvent } from 'react';
 
 type OrderFormValue = {
   zipCode: string;
@@ -38,7 +38,8 @@ export const OrderForm: FC<Props> = ({ onSubmit }) => {
     setCity(city);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     onSubmit({
       city,
       prefecture,

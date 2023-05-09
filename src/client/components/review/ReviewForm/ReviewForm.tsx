@@ -11,10 +11,6 @@ import type { FC, FormEvent } from 'react';
 // NOTE: 改行含めて 64 文字以内であるかどうか確認する
 const LESS_THAN_64_LENGTH_REGEX = /^([\s\S\n]{0,8}){0,8}$/u;
 
-type ReviewForm = {
-  comment: string;
-};
-
 export type Props = {
   productId: number;
 };

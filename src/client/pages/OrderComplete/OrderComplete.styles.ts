@@ -36,6 +36,10 @@ export const noticeDescription__mobile = () => css`
   font-size: 1rem;
 `;
 
+export const noticeDescriptionFallback = () => css`
+  height: 1lh;
+`;
+
 export const recommended = () => css`
   display: flex;
   flex-direction: column;

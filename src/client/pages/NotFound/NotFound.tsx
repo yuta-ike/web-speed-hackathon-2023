@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
+import classNames from 'classnames';
 
 import { loadFonts } from '../../utils/load_fonts';
 
@@ -19,10 +20,6 @@ export const NotFound: FC = () => {
     load();
   }, []);
 
-  if (!isReady) {
-    return null;
-  }
-
   return (
     <>
       <Helmet>
@@ -30,8 +27,20 @@ export const NotFound: FC = () => {
       </Helmet>
       <div className={styles.container()}>
         <div className={styles.inner()}>
-          <p className={styles.mainParagraph()}>ページが存在しません</p>
-          <p className={styles.subParagraph()}>Not Found</p>
+          <p
+            className={classNames(styles.mainParagraph(), {
+              [styles.mainParagraphFallback()]: !isReady,
+            })}
+          >
+            {isReady ? 'ページが存在しません' : ''}
+          </p>
+          <p
+            className={classNames(styles.subParagraph(), {
+              [styles.subParagraphFallback()]: !isReady,
+            })}
+          >
+            {isReady ? 'Not Found' : ''}
+          </p>
         </div>
       </div>
     </>

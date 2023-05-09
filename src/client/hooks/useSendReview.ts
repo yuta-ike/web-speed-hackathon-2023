@@ -12,7 +12,7 @@ export const useSendReview = () => {
     onQueryUpdated(observableQuery) {
       return observableQuery.refetch();
     },
-    refetchQueries: ['GetProductDetails'],
+    refetchQueries: ['GetProductReviews'],
   });
 
   return { sendReview };

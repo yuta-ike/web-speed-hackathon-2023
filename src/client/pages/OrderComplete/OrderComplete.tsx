@@ -26,7 +26,7 @@ export const OrderComplete: FC = () => {
     });
   }, []);
 
-  if (!isReadyFont || authUserLoading) {
+  if (authUserLoading) {
     return null;
   }
   if (!isAuthUser) {
@@ -51,9 +51,10 @@ export const OrderComplete: FC = () => {
                       className={classNames(styles.noticeDescription(), {
                         [styles.noticeDescription__desktop()]: deviceType === DeviceType.DESKTOP,
                         [styles.noticeDescription__mobile()]: deviceType === DeviceType.MOBILE,
+                        [styles.noticeDescriptionFallback()]: !isReadyFont,
                       })}
                     >
-                      このサイトは架空のサイトであり、商品が発送されることはありません
+                      {isReadyFont ? 'このサイトは架空のサイトであり、商品が発送されることはありません' : ''}
                     </p>
                   </div>
                 </AspectRatio>
