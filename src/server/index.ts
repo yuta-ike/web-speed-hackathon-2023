@@ -36,7 +36,7 @@ async function init(): Promise<void> {
 
   // TODO: キャッシュの設定
   app.use(async (ctx, next) => {
-    ctx.set('Cache-Control', 'no-store');
+    // ctx.set('Cache-Control', 'no-store');
     await next();
   });
 
