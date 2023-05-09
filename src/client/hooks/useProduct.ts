@@ -9,6 +9,7 @@ const Query = gql`
       description
       id
       media {
+        id
         file {
           filename
         }

@@ -33,3 +33,7 @@ export const comment = () => css`
   line-height: 20px;
   min-height: 20px;
 `;
+
+export const fallback = () => css`
+  height: 100vh;
+`;

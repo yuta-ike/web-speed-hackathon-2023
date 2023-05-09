@@ -2,24 +2,23 @@ import { Temporal } from '@js-temporal/polyfill';
 
 import { AspectRatio } from '../../foundation/AspectRatio';
 import { Image } from '../../foundation/Image';
+import { useReviews } from '../../../hooks/useReviews';
 
 import * as styles from './ReviewList.styles';
 
-import type { ReviewFragmentResponse } from '../../../graphql/fragments';
 import type { FC } from 'react';
 
 type Props = {
-  reviews: ReviewFragmentResponse[];
+  productId: number;
+  // reviews: ReviewFragmentResponse[];
 };
 
-export const ReviewList: FC<Props> = ({ reviews }) => {
-  if (reviews.length === 0) {
-    return null;
-  }
+export const ReviewList: FC<Props> = ({ productId }) => {
+  const { reviews } = useReviews(productId);
 
   return (
     <ul className={styles.itemList()}>
-      {reviews.map((review) => {
+      {reviews?.map((review) => {
         const endTime = Temporal.Instant.from(review.postedAt).toLocaleString('ja-jp', {
           day: '2-digit',
           hour: '2-digit',
@@ -45,4 +44,8 @@ export const ReviewList: FC<Props> = ({ reviews }) => {
       })}
     </ul>
   );
+};
+
+export const ReviewListFallback: React.FC = () => {
+  return <div className={styles.fallback()} />;
 };

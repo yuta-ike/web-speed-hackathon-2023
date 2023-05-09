@@ -5,6 +5,7 @@ export const container = () => css`
   aspect-ratio: 16 / 9;
   width: 100%;
   position: relative;
+  background-color: #eaeaea;
 `;
 
 export const video = () => css`

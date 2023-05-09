@@ -35,6 +35,7 @@ export const useReviews = (productId: number | undefined) => {
   });
 
   useEffect(() => {
+    // TODO: どういうこと？
     // サーバー負荷が懸念されそうなので、リクエストを少し待つ
     // サーバー負荷がなくなれば、すぐ読み込んでもよい
     const timer = setTimeout(() => {

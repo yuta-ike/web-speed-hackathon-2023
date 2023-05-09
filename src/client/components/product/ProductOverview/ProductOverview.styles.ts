@@ -15,9 +15,17 @@ export const productName = () => css`
   font-weight: 700;
 `;
 
+export const productNameFallback = () => css`
+  height: 1lh;
+`;
+
 export const productDescription = () => css`
   font-size: 0.875rem;
   margin-top: 8px;
+`;
+
+export const productDescriptionFallback = () => css`
+  height: 100vh;
 `;
 
 export const priceWrapper = () => css`
