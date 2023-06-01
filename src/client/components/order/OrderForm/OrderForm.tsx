@@ -35,7 +35,7 @@ export const OrderForm: FC<Props> = ({ onSubmit }) => {
         return;
       }
 
-      if (7 <= zipCode.length) {
+      if (7 == zipCode.length) {
         const address = zipcodeJa[Number(zipCode[6])];
         const prefecture = address.shift() as string;
         const city = address.join(' ');
